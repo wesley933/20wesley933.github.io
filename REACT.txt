@@ -1,0 +1,35 @@
+function insertionSort(vetor) {
+ const tamanho = vetor.length;
+
+for (let i = 1; i < tamanho; i++) {
+   
+const elementoAtual = vetor[i];
+    
+let j = i - 1;
+   
+ while (j >= 0 && vetor[j] > elementoAtual) {
+
+ vetor[j + 1] = vetor[j];
+
+j--;
+}
+
+vetor[j + 1] = elementoAtual;
+}
+
+return vetor;
+}
+
+const tamanhoDoVetor = 30;
+
+const vetor = Array.from({ length: tamanhoDoVetor }, (_, i) => 2 * i + 1);
+
+for (let i = vetor.length - 1; i > 0; i--) {
+
+ const j = Math.floor(Math.random() * (i + 1));
+
+ [vetor[i], vetor[j]] = [vetor[j], vetor[i]];
+}
+const vetorOrdenado = insertionSort(vetor.slice());
+
+console.log("Vetor Ordenado:", vetorOrdenado);
